@@ -1,18 +1,18 @@
 # Web Research Bootstrap
 
-- Repository: `vibemathing/vibe-mathing-problem-public-template`
+- Repository: `vibemathing/problem-opg-56230-no-monochromatic-maximum-clique`
 - Repository binding: `verified`
-- Repository database ID: `1358726712`
-- Repository node ID: `R_kgDOUPyGOA`
+- Repository database ID: `1358797563`
+- Repository node ID: `R_kgDOUP2a-w`
 - Default branch: `main`
 - Visibility: `public`
-- Canonical Problem: `problem:template-placeholder`
-- ProblemContract SHA-256: `e64cd03254e03dd661eade23243c3c21793fc2d8bffa2d33c172cf8ed2e7f940`
-- Problem lifecycle: `draft`
-- Problem admission: `preview_unadmitted`
+- Canonical Problem: `problem:opg-56230-no-monochromatic-maximum-clique`
+- ProblemContract SHA-256: `b72fcc56e5732eeedc902613e19c21b322dcf60c55212feb965a07c56d30c636`
+- Problem lifecycle: `active`
+- Problem admission: `canonical_admitted`
 - Harness suite: `harness-source:web-research-full` `1.1.0`
 - Suite manifest SHA-256: `7dfdb41a68bfda314d663ba03b4b2a713ea194168ade5287e58c6434be5cc4fb`
-- Harness snapshot SHA-256: `2e5a81b661248d816f60d55ad7f5eaa6000fa64fb92820cf305e48652aed6262`
+- Harness snapshot SHA-256: `74a42ae938692f151da4835ea25379f792c2e3826ff975a0fb5d394ff2b1cb76`
 - Channel: `chatgpt-web-github-issue-pr-writer`
 
 ## Required read order

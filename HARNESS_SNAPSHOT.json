@@ -62,7 +62,7 @@
     "sha256": "251f90611be508ad40fca3aad135f5a1d7a889c96a90f04cacc513bda9e03d95",
     "version": "1.1.0"
   },
-  "built_at": "2026-09-06T11:24:12+08:00",
+  "built_at": "2026-09-06T12:51:10+08:00",
   "digest_excludes": [
     "HARNESS_SNAPSHOT.json",
     "WEB_BOOTSTRAP.md"
@@ -1083,12 +1083,12 @@
       "sha256": "65481bfbc55a5fc609207d35b5bf293d1fa3052be35ee96a12860e3a5536278b"
     },
     {
-      "bytes": 9035,
+      "bytes": 9969,
       "layer": "web_channel",
       "mode": "0644",
       "owner": "harness",
       "path": "WEB_CONTEXT_BUNDLE.md",
-      "sha256": "6392294580958c5e0e1084cf2c60c4714220038e4e2bfe20e74b2c1affdf19b6"
+      "sha256": "30b637a2f146d75cac9f70459286d7bba76edbdf45ecc7d744f6a6096368f19e"
     },
     {
       "bytes": 2546,
@@ -1435,12 +1435,12 @@
       "sha256": "8226e2d8197f027ef8c0a9aca83e0e9f6208d035d727e7624e94265ae3d94d6e"
     },
     {
-      "bytes": 1557,
+      "bytes": 2247,
       "layer": "problem_instance",
       "mode": "0644",
       "owner": "problem",
       "path": "problem-library/records/canonical-problems.jsonl",
-      "sha256": "e30abb1cf2f0f5b39877b895a7480943550c727f7fe4b842769dc20966179541"
+      "sha256": "054febcda54d45a5ea2f5a62b2aec719d5cfbc99d7cef957f531d0fc53c85e00"
     },
     {
       "bytes": 3891,
@@ -1869,28 +1869,28 @@
   ],
   "harness_version": "1.1.0",
   "problem": {
-    "admission": "preview_unadmitted",
-    "contract_sha256": "e64cd03254e03dd661eade23243c3c21793fc2d8bffa2d33c172cf8ed2e7f940",
-    "lifecycle": "draft",
-    "problem_id": "problem:template-placeholder"
+    "admission": "canonical_admitted",
+    "contract_sha256": "b72fcc56e5732eeedc902613e19c21b322dcf60c55212feb965a07c56d30c636",
+    "lifecycle": "active",
+    "problem_id": "problem:opg-56230-no-monochromatic-maximum-clique"
   },
   "profile": "web-research-full",
-  "repository": "vibemathing/vibe-mathing-problem-public-template",
+  "repository": "vibemathing/problem-opg-56230-no-monochromatic-maximum-clique",
   "repository_identity": {
     "binding_state": "verified",
-    "database_id": 1358726712,
+    "database_id": 1358797563,
     "default_branch": "main",
-    "full_name": "vibemathing/vibe-mathing-problem-public-template",
-    "node_id": "R_kgDOUPyGOA",
+    "full_name": "vibemathing/problem-opg-56230-no-monochromatic-maximum-clique",
+    "node_id": "R_kgDOUP2a-w",
     "visibility": "public"
   },
   "schema_version": "1.1.0",
-  "snapshot_id": "harness-snapshot:template-placeholder",
+  "snapshot_id": "harness-snapshot:opg-56230-no-monochromatic-maximum-clique",
   "source": {
     "commit": "7dfdb41a68bfda314d663ba03b4b2a713ea19416",
     "repository": "reviewed-public-export",
     "source_manifest_sha256": "7dfdb41a68bfda314d663ba03b4b2a713ea194168ade5287e58c6434be5cc4fb",
     "worktree_dirty": false
   },
-  "tree_sha256": "477cb5ec65c457390c1210b4b9e74b96cc20490b1a09aae29450653e9f480032"
+  "tree_sha256": "093bb46909574eaee7a74914644b618229eed541f3910879af3f7342e1dc82c9"
 }

@@ -17,14 +17,15 @@ from typing import Any
 from jsonschema import Draft202012Validator, FormatChecker
 
 from build_web_context_bundle import render_context
+from vibe_mathing.reasoning import apply_reasoning_agent_overlays
 from vibe_mathing.web_channel import canonical_json_sha256, sha256_file
 
 ROOT = Path(__file__).resolve().parents[1]
 TASK = ROOT / "governance/tasks/0027-web-gpt-github-chat-research-harness"
 DEFAULT_MANIFEST = TASK / "harness-source-manifest.v1.json"
 DEFAULT_TEMPLATE = TASK / "problem-repository-template"
-BUILDER_VERSION = "1.1.0"
-IDENTITY_EXCLUDES = {"HARNESS_SNAPSHOT.json", "WEB_BOOTSTRAP.md"}
+BUILDER_VERSION = "1.2.4"
+IDENTITY_EXCLUDES = {"HARNESS_SNAPSHOT.json", "HARNESS_SNAPSHOT_HISTORY.json", "WEB_BOOTSTRAP.md"}
 MUTABLE_GENERATED = {
     "research/records/attempts.jsonl",
     "research/records/failed-routes.jsonl",
@@ -284,6 +285,11 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
         copy_regular(candidate, target)
         file_policy[relative.as_posix()] = ("web_channel", "harness")
 
+    # Container Skill snapshots remain immutable source evidence. Their scoped
+    # AGENTS files receive a generated inheritance overlay only in the built
+    # problem repository, so every effective Agent surface carries the policy.
+    apply_reasoning_agent_overlays(output)
+
     canonical_path = output / "problem-library/records/canonical-problems.jsonl"
     canonical_path.parent.mkdir(parents=True, exist_ok=True)
     canonical_path.write_text(json.dumps(problem, ensure_ascii=False, sort_keys=True) + "\n", encoding="utf-8")
@@ -352,6 +358,21 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
         "prohibited_write_paths": profile["prohibited_repository_write_paths"],
         "autonomy_policy": profile["autonomy_policy"],
         "repository_scope_policy": profile["repository_scope_policy"],
+        "harness_maintenance_policy": {
+            "branch_prefix": "maintenance/harness-",
+            "trusted_actors": ["vibemathing"],
+            "exact_regenerated_snapshot_delta_required": True,
+            "mathematical_state_changes_allowed": False,
+        },
+        "state_freshness_policy": {
+            "authoritative_state": "fresh_default_branch_and_live_github_objects",
+            "historical_chat_is_authoritative": False,
+            "design_time_revisions_may_advance": True,
+            "audit_maturity_is_repository_admission": False,
+            "round_end_is_permission_failure": False,
+            "issue_identity_fields": ["problem_id", "attempt_id", "route_id", "obligation_id"],
+            "issue_creation": "search_twice_then_create_or_reuse_unique",
+        },
         "allowed_github_operations": [
             "issue_create", "candidate_branch_create", "candidate_file_create",
             "candidate_file_update", "candidate_file_delete", "commit_create",
@@ -422,6 +443,29 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
     validate_json(snapshot, TASK / "harness-snapshot-manifest.v1.schema.json", "Harness snapshot")
     write_json(output / "HARNESS_SNAPSHOT.json", snapshot)
     snapshot_sha = sha256_file(output / "HARNESS_SNAPSHOT.json")
+    history = {
+        "schema_version": "1.0.0",
+        "repository": args.repository,
+        "repository_identity": {
+            "database_id": args.repository_database_id,
+            "node_id": args.repository_node_id,
+            "default_branch": args.default_branch,
+            "visibility": args.visibility,
+        },
+        "entries": [{
+            "harness_snapshot_sha256": snapshot_sha,
+            "harness_version": snapshot["harness_version"],
+            "tree_sha256": snapshot["tree_sha256"],
+            "source_manifest_sha256": snapshot["source"]["source_manifest_sha256"],
+            "importer_policy_sha256": sha256_file(output / "scripts/import_web_attempt.py"),
+        }],
+    }
+    validate_json(
+        history,
+        TASK / "harness-snapshot-history.v1.schema.json",
+        "Harness snapshot history",
+    )
+    write_json(output / "HARNESS_SNAPSHOT_HISTORY.json", history)
 
     bootstrap_template = (template / "WEB_BOOTSTRAP.md.in").read_text(encoding="utf-8")
     replacements = {

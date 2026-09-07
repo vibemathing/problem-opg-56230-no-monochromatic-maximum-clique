@@ -1,0 +1,26 @@
+{
+  "entries": [
+    {
+      "harness_snapshot_sha256": "74a42ae938692f151da4835ea25379f792c2e3826ff975a0fb5d394ff2b1cb76",
+      "harness_version": "1.1.0",
+      "importer_policy_sha256": "a7650a8ba5be3fef370914b24a49b1118f57dc12f41980f21b11ef2b0a8267c1",
+      "source_manifest_sha256": "7dfdb41a68bfda314d663ba03b4b2a713ea194168ade5287e58c6434be5cc4fb",
+      "tree_sha256": "093bb46909574eaee7a74914644b618229eed541f3910879af3f7342e1dc82c9"
+    },
+    {
+      "harness_snapshot_sha256": "94ef00afcae789f65e204e3b48694557989d45ed4dbe3831d7dd6c2deada02f0",
+      "harness_version": "1.2.4",
+      "importer_policy_sha256": "a7650a8ba5be3fef370914b24a49b1118f57dc12f41980f21b11ef2b0a8267c1",
+      "source_manifest_sha256": "fedd664f1ac16c5232eb05076b73f2bab566ed672840e7f2af851c77253813b3",
+      "tree_sha256": "cb9c22ff9ecf0163ec4d0dc2a4dbd40957bbbb9c2e5f5b3a3914a66b34f5619b"
+    }
+  ],
+  "repository": "vibemathing/problem-opg-56230-no-monochromatic-maximum-clique",
+  "repository_identity": {
+    "database_id": 1358797563,
+    "default_branch": "main",
+    "node_id": "R_kgDOUP2a-w",
+    "visibility": "public"
+  },
+  "schema_version": "1.0.0"
+}
